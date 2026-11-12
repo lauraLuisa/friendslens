@@ -1124,8 +1124,103 @@
       letter-spacing: .04em
     }
 
+    .study {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+      gap: 24px 48px;
+      align-items: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .study::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      left: -180px;
+      bottom: -220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(127, 227, 255, .12), transparent 60%);
+      pointer-events: none
+    }
+
+    .study h3 {
+      font-size: clamp(24px, 3vw, 32px);
+      margin: 10px 0 14px
+    }
+
+    .study-intro p {
+      color: var(--muted);
+      margin: 0
+    }
+
+    .study-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: 11px;
+      letter-spacing: .06em
+    }
+
+    .study-meta span {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(127, 227, 255, .35);
+      color: var(--hud)
+    }
+
+    .study-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      background: rgba(16, 22, 47, .5)
+    }
+
+    .stat b {
+      display: block;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: var(--hud);
+      font-variant-numeric: tabular-nums
+    }
+
+    .stat span {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.45;
+      display: block
+    }
+
+    .stat-caveat b {
+      color: var(--paper)
+    }
+
+    .study-note {
+      grid-column: 1 / -1;
+      margin: 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .02em
+    }
+
     @media (max-width:980px) {
-      .reviews {
+      .reviews,
+      .study {
         grid-template-columns: 1fr
       }
 
@@ -1542,16 +1637,6 @@
             </figcaption>
           </figure>
           <figure class="rv">
-            <div class="rv-top"><span class="stars" style="--r:5" role="img" aria-label="5 out of 5 stars"></span>
-              <time datetime="2040-01-30">30 Jan 2040</time>
-            </div>
-            <h3>First date in two years</h3>
-            <blockquote>When I got nervous it reminded me to breathe and to ask her a question back. It never felt
-              like it was talking for me. We're seeing each other again on Friday.</blockquote>
-            <figcaption><strong>Priya N., Munich</strong><span class="mono">Verified · 4 h / day</span>
-            </figcaption>
-          </figure>
-          <figure class="rv">
             <div class="rv-top"><span class="stars" style="--r:4" role="img" aria-label="4 out of 5 stars"></span>
               <time datetime="2040-01-18">18 Jan 2040</time>
             </div>
@@ -1562,19 +1647,38 @@
             <figcaption><strong>Aylin T., Berlin</strong><span class="mono">Verified · 10 h / day</span>
             </figcaption>
           </figure>
-          <figure class="rv">
-            <div class="rv-top"><span class="stars" style="--r:3" role="img" aria-label="3 out of 5 stars"></span>
-              <time datetime="2040-01-05">5 Jan 2040</time>
-            </div>
-            <h3>Works, but am I learning anything?</h3>
-            <blockquote>The dopamine support makes hard conversations feel much easier. That's the problem: on days
-              without the headpiece I'm as anxious as before. I'll give it another month with lower support.
-              </blockquote>
-            <figcaption><strong>Lena W., Augsburg</strong><span class="mono">Verified · 12 h / day</span>
-            </figcaption>
-          </figure>
         </div>
       </div>
+      <article class="tile study" aria-labelledby="study-title">
+        <div class="study-intro">
+          <div class="eyebrow">Clinical study · 2039</div>
+          <h3 id="study-title">12 weeks with a companion</h3>
+          <p>Randomised controlled trial with 1,240 adults who described themselves as socially anxious. Half wore
+            friendslens, half received a standard social skills app. Conducted by the independent Institute for
+            Companion Research.</p>
+          <div class="study-meta mono"><span>n = 1,240</span><span>12 weeks</span><span>Age 19–64</span></div>
+        </div>
+        <div class="study-stats">
+          <div class="stat">
+            <b>+38%</b>
+            <span>more conversations started by participants themselves</span>
+          </div>
+          <div class="stat">
+            <b>−31%</b>
+            <span>lower social anxiety score after 12 weeks</span>
+          </div>
+          <div class="stat">
+            <b>72%</b>
+            <span>felt more confident in conversations with strangers</span>
+          </div>
+          <div class="stat stat-caveat">
+            <b>41%</b>
+            <span>of the improvement remained after 4 weeks without the device</span>
+          </div>
+        </div>
+        <p class="study-note">Compared with the control group. Effects were strongest with 4–8 h of companion time per
+          day. We're working on helping more of the progress last once the lenses come out.</p>
+      </article>
     </div>
   </section>
 
