@@ -967,6 +967,179 @@
       }
     }
 
+    /* reviews */
+    .reviews {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+      gap: 24px;
+      align-items: start
+    }
+
+    .stars {
+      display: inline-block;
+      font-size: 16px;
+      letter-spacing: 2px;
+      line-height: 1;
+      background: linear-gradient(90deg, var(--coral) calc(var(--r) / 5 * 100%), rgba(246, 245, 242, .18) 0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent
+    }
+
+    .stars::before {
+      content: "★★★★★"
+    }
+
+    .score {
+      position: sticky;
+      top: 96px
+    }
+
+    .score .avg {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 12px 0 8px;
+      font-variant-numeric: tabular-nums
+    }
+
+    .score .avg b {
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: -.04em;
+      line-height: 1
+    }
+
+    .score .avg span {
+      color: var(--muted)
+    }
+
+    .score .stars {
+      font-size: 20px
+    }
+
+    .score .count {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px
+    }
+
+    .dist {
+      list-style: none;
+      margin: 24px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .dist li {
+      display: grid;
+      grid-template-columns: 24px 1fr 36px;
+      gap: 10px;
+      align-items: center
+    }
+
+    .dist li span:last-child {
+      text-align: right
+    }
+
+    .dist .track {
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(246, 245, 242, .1);
+      overflow: hidden
+    }
+
+    .dist .track i {
+      display: block;
+      height: 100%;
+      background: var(--coral);
+      border-radius: 3px
+    }
+
+    .rv-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px
+    }
+
+    .rv {
+      margin: 0;
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .rv-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px
+    }
+
+    .rv time {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted)
+    }
+
+    .rv h3 {
+      font-size: 18px;
+      letter-spacing: -.01em;
+      line-height: 1.3
+    }
+
+    .rv blockquote {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px
+    }
+
+    .rv figcaption {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px 12px;
+      font-size: 14px
+    }
+
+    .rv figcaption strong {
+      font-weight: 600
+    }
+
+    .rv figcaption .mono {
+      font-size: 11px;
+      color: var(--hud);
+      letter-spacing: .04em
+    }
+
+    @media (max-width:980px) {
+      .reviews {
+        grid-template-columns: 1fr
+      }
+
+      .score {
+        position: static
+      }
+    }
+
+    @media (max-width:640px) {
+      .rv-list {
+        grid-template-columns: 1fr
+      }
+    }
+
     .buy {
       scroll-margin-top: 45vh;
       display: flex;
@@ -1066,7 +1239,8 @@
 
       .unit,
       .calib,
-      .tile {
+      .tile,
+      .rv {
         padding: 22px;
         border-radius: 16px
       }
@@ -1137,7 +1311,7 @@
         <span><b>friends</b><span>lens</span></span>
       </a>
       <div class="links"><a href="#product">Product</a><a href="#how">How it works</a><a href="#lens-view">Lens
-          view</a><a href="#pricing">Pricing</a><a href="#box">In the box</a></div>
+          view</a><a href="#reviews">Reviews</a><a href="#pricing">Pricing</a><a href="#box">In the box</a></div>
       <a class="btn btn-primary" href="#buy">Buy now</a>
     </div>
   </nav>
@@ -1306,6 +1480,101 @@
       </div>
       <p class="note">Max. 3 signals at a time &#183; always at the edge of your view &#183; nobody but you can see them
       </p>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <div class="eyebrow">Reviews</div>
+          <h2>What wearers say.</h2>
+        </div>
+        <p>Verified reviews from people who have finished calibration. We show all of them, including the ones
+          that point out what we still need to get better at.</p>
+      </div>
+      <div class="reviews">
+        <div class="tile score">
+          <div class="eyebrow">Average rating</div>
+          <div class="avg"><b>4.3</b><span>/ 5</span></div>
+          <span class="stars" style="--r:4.3" role="img" aria-label="4.3 out of 5 stars"></span>
+          <div class="count">2,184 verified reviews</div>
+          <ul class="dist" aria-label="Rating distribution">
+            <li><span>5★</span><span class="track"><i style="width:54%"></i></span><span>54%</span></li>
+            <li><span>4★</span><span class="track"><i style="width:30%"></i></span><span>30%</span></li>
+            <li><span>3★</span><span class="track"><i style="width:11%"></i></span><span>11%</span></li>
+            <li><span>2★</span><span class="track"><i style="width:3%"></i></span><span>3%</span></li>
+            <li><span>1★</span><span class="track"><i style="width:2%"></i></span><span>2%</span></li>
+          </ul>
+        </div>
+        <div class="rv-list">
+          <figure class="rv">
+            <div class="rv-top"><span class="stars" style="--r:5" role="img" aria-label="5 out of 5 stars"></span>
+              <time datetime="2040-03-14">14 Mar 2040</time>
+            </div>
+            <h3>I stayed at a party for three hours. Me.</h3>
+            <blockquote>I usually leave after twenty minutes. The companion told me who looked open to talk and
+              gave me one opener. After that I barely needed it. The reflection afterwards showed me I actually
+              did most of the talking myself.</blockquote>
+            <figcaption><strong>Jonas K., Hamburg</strong><span class="mono">Verified · 6 h / day</span>
+            </figcaption>
+          </figure>
+          <figure class="rv">
+            <div class="rv-top"><span class="stars" style="--r:4" role="img" aria-label="4 out of 5 stars"></span>
+              <time datetime="2040-02-27">27 Feb 2040</time>
+            </div>
+            <h3>Great after day 7, the headpiece pinches</h3>
+            <blockquote>Calibration week feels slow because it only listens. Once it's ready, the Reflect replays are
+              the best part. One star off: after about six hours the headpiece starts pressing behind my ear.
+              </blockquote>
+            <figcaption><strong>Mira S., Vienna</strong><span class="mono">Verified · 8 h / day</span>
+            </figcaption>
+          </figure>
+          <figure class="rv">
+            <div class="rv-top"><span class="stars" style="--r:3" role="img" aria-label="3 out of 5 stars"></span>
+              <time datetime="2040-02-09">9 Feb 2040</time>
+            </div>
+            <h3>Helpful, but sometimes too eager</h3>
+            <blockquote>A friend was telling me about her dad being in hospital and the lens suggested a light
+              conversation starter. Not the moment. I set whispers to "only when I hesitate" and it's much better
+              now, but the default is too chatty.</blockquote>
+            <figcaption><strong>Daniel O., Lyon</strong><span class="mono">Verified · 4 h / day</span>
+            </figcaption>
+          </figure>
+          <figure class="rv">
+            <div class="rv-top"><span class="stars" style="--r:5" role="img" aria-label="5 out of 5 stars"></span>
+              <time datetime="2040-01-30">30 Jan 2040</time>
+            </div>
+            <h3>First date in two years</h3>
+            <blockquote>When I got nervous it reminded me to breathe and to ask her a question back. It never felt
+              like it was talking for me. We're seeing each other again on Friday.</blockquote>
+            <figcaption><strong>Priya N., Munich</strong><span class="mono">Verified · 4 h / day</span>
+            </figcaption>
+          </figure>
+          <figure class="rv">
+            <div class="rv-top"><span class="stars" style="--r:4" role="img" aria-label="4 out of 5 stars"></span>
+              <time datetime="2040-01-18">18 Jan 2040</time>
+            </div>
+            <h3>Spot on with strangers, less with family</h3>
+            <blockquote>The emotion reads with new people are scarily good. With my mum it keeps saying "irritated"
+              when she's just like that. It's slowly getting better since I started correcting it after
+              conversations.</blockquote>
+            <figcaption><strong>Aylin T., Berlin</strong><span class="mono">Verified · 10 h / day</span>
+            </figcaption>
+          </figure>
+          <figure class="rv">
+            <div class="rv-top"><span class="stars" style="--r:3" role="img" aria-label="3 out of 5 stars"></span>
+              <time datetime="2040-01-05">5 Jan 2040</time>
+            </div>
+            <h3>Works, but am I learning anything?</h3>
+            <blockquote>The dopamine support makes hard conversations feel much easier. That's the problem: on days
+              without the headpiece I'm as anxious as before. I'll give it another month with lower support.
+              </blockquote>
+            <figcaption><strong>Lena W., Augsburg</strong><span class="mono">Verified · 12 h / day</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 
